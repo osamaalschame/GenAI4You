@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "AI SafeChatbot Assistant",
+    "description_en": "The STPAChatBot is now integrated into the cutting-edge AI SafeChatBot Platform, bringing advanced safety analysis methods like STPA, FTA, FMEA, HAZOP, and more to the forefront of innovation with the power of AI Generative capabilities.",
+    "description_ar": "تم الآن دمج STPAChatBot في منصة SafeChatBot المتقدمة المدعومة بالذكاء الاصطناعي، مما يجلب أساليب التحليل المتقدمة للسلامة مثل STPA وFTA وFMEA وHAZOP وغيرها إلى طليعة الابتكار بفضل قدرات الذكاء الاصطناعي التوليدي.",
+    "video_url": "https://www.youtube.com/embed/T_jakJ1TyQw",
+    "iframe_url": "https://AsimAbdulkhaleq-SafeChatBot.hf.space"
+  },
+  {
+    "id": 4,
+    "title": "CVisionary",
+    "description_en": "AI-powered platform that helps you craft professional, modern, and ATS-optimized CVs — quickly and affordably.",
+    "description_ar": "منصة مدعومة بالذكاء الاصطناعي تساعدك على إنشاء سير ذاتية احترافية، عصرية، ومتوافقة مع أنظمة تتبع المتقدمين (ATS) — بسرعة وبسعر مناسب.",
+    "video_url": "https://www.youtube.com/embed/0Nths2X8XOI",
+    "iframe_url": "https://alschameri-test-ai.hf.space"
+  },
+  {
+    "id": 2,
+    "title": "The Smart Yemeni Legal Assistant",
+    "description_en": "The Smart Yemeni Legal Assistant is an AI-powered tool designed to help Yemeni citizens understand their legal rights, access legal resources, and receive guidance on common legal issues — all in a simple and accessible way.",
+    "description_ar": "المساعد القانوني اليمني الذكي هو أداة مدعومة بالذكاء الاصطناعي تهدف إلى مساعدة المواطنين اليمنيين على فهم حقوقهم القانونية، والوصول إلى الموارد القانونية، والحصول على إرشادات حول القضايا القانونية الشائعة — بطريقة بسيطة وسهلة الوصول.",
+    "video_url": "https://www.youtube.com/embed/OSMI9EqHdxE",
+    "iframe_url": "https://ai-assistant-platform-hijaj.onrender.com"
+  },
+  {
+    "id": 3,
+    "title": "AI University Agent",
+    "description_en": "Your smart assistant for university admissions and student services. Get help with admission, course registration, fees, and login issues — all in one place!",
+    "description_ar": "مساعدك الذكي للقبول الجامعي وخدمات الطلاب. احصل على المساعدة في القبول، تسجيل المقررات، الرسوم، ومشكلات تسجيل الدخول — كل ذلك في مكان واحد!",
+    "video_url": "https://www.youtube.com/embed/_fPcveYYvao",
+    "iframe_url": "https://asimabdulkhaleq-aiuniversityagent.hf.space"
+  },
+  {
+    "id": 5,
+    "title": "GenAI for Systems Engineering Development",
+    "description_en": "Generative AI (GenAI) is revolutionizing systems engineering by automating the full development cycle—from requirements generation and UML/SysML design to code generation, verification, and validation. Using tools like PlantUML, GenAI accelerates system modeling, ensures consistency, and enhances quality across the engineering process.",
+    "description_ar": "يُحدث الذكاء الاصطناعي التوليدي (GenAI) تحولًا في هندسة النظم عبر أتمتة دورة التطوير بالكامل: من توليد المتطلبات وتصميم UML/SysML إلى توليد الشيفرة والتحقق والتوثيق. باستخدام أدوات مثل PlantUML، يُسرّع GenAI نمذجة الأنظمة ويُحسن الجودة والاتساق في كل المراحل.",
+    "video_url": "https://www.youtube.com/embed/jPjk7jDgyLs",
+    "iframe_url": "https://asimabdulkhaleq-genaisyseng.hf.space/"
+  },
+  {
+    "id": 6,
+    "title": "GenAI IIoT Security Monitoring Solution",
+    "description_en": "This solution uses Generative AI (GenAI) to monitor IIoT networks by analyzing real-time sensor data to detect anomalies, predict failures, and provide human-readable insights. GenAI enhances traditional monitoring with contextual understanding, enabling faster responses, reduced operator workload, and smarter decision-making through natural language interfaces. It supports edge and cloud deployment, ensuring scalability and low-latency performance across industrial environments.",
+    "description_ar": "يستخدم هذا الحل الذكاء الاصطناعي التوليدي (GenAI) لمراقبة شبكات الإنترنت الصناعي للأشياء (IIoT) من خلال تحليل بيانات المستشعرات في الوقت الفعلي لاكتشاف الشذوذ، والتنبؤ بالأعطال، وتقديم رؤى مفهومة للبشر. يعزز GenAI المراقبة التقليدية من خلال الفهم السياقي، مما يتيح استجابات أسرع، ويقلل من عبء العمل على المشغلين، ويدعم اتخاذ قرارات أكثر ذكاءً عبر واجهات اللغة الطبيعية. كما يدعم النشر على الحافة والسحابة، مما يضمن الأداء القابل للتوسع والمنخفض الكمون في البيئات الصناعية.",
+    "video_url": "https://www.youtube.com/embed/5rUS7LS4ii8",
+    "iframe_url": null
+  }
+]
