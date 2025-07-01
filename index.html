@@ -1021,19 +1021,19 @@
             getInvolvedChevron.classList.toggle('active');
         });
 
-        const overlay = document.getElementById('iframe-overlay');
-        const iframe = overlay.querySelector('iframe');
-        setTimeout(async () => {
-            document.querySelectorAll('.toggle-iframe').forEach(button => {
+        // const overlay = document.getElementById('iframe-overlay');
+        // const iframe = overlay.querySelector('iframe');
+        // setTimeout(async () => {
+        //     document.querySelectorAll('.toggle-iframe').forEach(button => {
             
-            button.addEventListener('click', () => {
-                console.log('clicked toggle-iframe button', button.dataset.url);
-                iframe.src = button.dataset.url;
-                overlay.classList.add('active');
-                overlay.querySelector('.iframe-container').classList.add('skeleton');
-            });
-        });
-        }, 1000); // 500ms delay
+        //     button.addEventListener('click', () => {
+        //         console.log('clicked toggle-iframe button', button.dataset.url);
+        //         iframe.src = button.dataset.url;
+        //         overlay.classList.add('active');
+        //         overlay.querySelector('.iframe-container').classList.add('skeleton');
+        //     });
+        // });
+        // }, 1000); // 500ms delay
         
         overlay.querySelector('.close-overlay').addEventListener('click', () => {
             overlay.classList.remove('active');
@@ -1045,7 +1045,23 @@
                 iframe.src = '';
             }
         });
+        //
+        function toggleIframePerview(button){
+            const overlay = document.getElementById('iframe-overlay');
+            const iframe = overlay.querySelector('iframe');
 
+            iframe.src = button.dataset.url;
+        
+        
+            overlay.classList.add('active');
+            overlay.querySelector('.iframe-container').classList.add('skeleton');
+            
+            overlay.querySelector('.close-overlay').addEventListener('click', () => {
+            overlay.classList.remove('active');
+            iframe.src = '';
+        });
+       
+        }
         // // Fetch visitor count on page load
         // async function fetchVisitorCount() {
         //     try {
@@ -1126,7 +1142,7 @@
             }
             ${app.iframe_url ? `
             <div class="mb-4">
-                <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe" data-url="${ app.iframe_url }">Preview Application</button>
+                <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe" onclick="toggleIframePerview(this)" data-url="${ app.iframe_url }">Preview Application</button>
             </div>` : ''
             }
           `;
