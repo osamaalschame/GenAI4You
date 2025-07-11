@@ -844,6 +844,12 @@
             document.querySelectorAll('.description').forEach(desc => {
                 desc.textContent = lang === 'ar' ? desc.dataset.ar : desc.dataset.en;
             });
+            document.querySelectorAll('.preview-btn').forEach(desc => {
+                desc.textContent = lang === 'ar' ? desc.dataset.ar : desc.dataset.en;
+            });
+            document.querySelectorAll('.project-title').forEach(desc => {
+                desc.textContent = lang === 'ar' ? desc.dataset.ar : desc.dataset.en;
+            });
         });
 
         let vantaEffect = null;
@@ -1129,7 +1135,7 @@
 
           div.innerHTML = `
             <span class="badge mb-2">AI-Powered</span>
-            <h3 class="text-xl font-semibold mb-3 font-orbitron">${app.title}</h3>
+            <h3 class="text-xl font-semibold mb-3 font-orbitron project-title" data-en="${app.title}" data-ar="${app.title_ar}">${app.title}</h3>
             <p class="text-gray-300 mb-4 description" data-en="${app.description_en}" data-ar="${app.description_ar}">
               ${app.description_en}
             </p>
@@ -1141,7 +1147,8 @@
             }
             ${app.iframe_url ? `
             <div class="mb-4">
-                <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe" onclick="toggleIframePerview(this)" data-url="${ app.iframe_url }">Preview Application</button>
+                <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe preview-btn" data-en="Preview Application"
+            data-ar="عرض" onclick="toggleIframePerview(this)" data-url="${ app.iframe_url }">Preview Application</button>
             </div>` : ''
             }
           `;
