@@ -229,6 +229,7 @@
             border-radius: 0.75rem;
             display: flex;
             align-items: flex-end;
+            font-size: smaller;
         }
         .chat-message.user {
             margin-left: auto;
@@ -519,6 +520,9 @@
             .chat-btn { padding: 0.5rem 1rem; }
             .vision-mission-row { flex-direction: column; }
             .visitor-counter { font-size: 0.8rem; }
+             .iframe-container {
+                    height: 70vh !important; /* 70% of the viewport height */
+                }
         }
     </style>
 </head>
@@ -682,7 +686,8 @@
     <div class="iframe-overlay" id="iframe-overlay">
         <div class="iframe-container skeleton">
             <iframe frameborder="0" width="100%" height="100%" onload="this.parentElement.classList.remove('skeleton')" onerror="this.parentElement.innerHTML='<p class=\'text-red-400\'>Failed to load application. Please check the URL.</p>'"></iframe>
-            <button class="gradient-btn text-white px-4 py-2 rounded-lg mt-4 close-overlay">Close</button>
+            <button class="gradient-btn text-white  rounded-lg close-overlay" style="margin: 0.5rem 0.2rem 0.5rem 0.4rem;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;">X</button>
         </div>
     </div>
 
@@ -911,84 +916,75 @@
             return 'en';
         }
 
-        function isGreeting(text) {
-            const greetings = {
-                en: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-                ar: ['مرحبا', 'أهلاً', 'صباح الخير', 'مساء الخير']
-            };
-            text = text.toLowerCase();
-            const lang = detectLanguage(text);
-            return greetings[lang].some(g => text.includes(g));
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
         }
 
-        const chatBot = {
-            greetings: {
-                en: 'Hello! How can I assist you today?',
-                ar: 'مرحبا! كيف يمكنني مساعدتك اليوم؟'
-            },
-            responses: {
-               en: {
-                'about us|who are you|organization': 'GenAI4You is a non-profit volunteer team passionate about leveraging AI to solve global challenges. Our diverse team provides free consulting to empower communities and organizations.',
-                'vision|goal': 'Our vision is to create a world where AI technology is accessible to all, driving innovation and inclusivity.',
-                'mission|purpose': 'Our mission is to provide free AI technology consulting to communities and organizations, fostering innovation and inclusivity worldwide.',
-                'services|offerings|what do you do': 'We offer AI consulting to guide organizations in implementing AI solutions and custom development of Generative AI applications tailored to your needs.',
-                'get involved|participate|join': 'You can get involved by sharing your cases, requesting a consultation, or providing your opinions. Visit the "Get Involved" section on our website!',
-                'contact|reach out': 'You can reach us via the contact form on our website or by chatting here. We’re excited to hear from you!',
-                'products|applications': 'Our products are AI-powered applications designed to address various challenges. Check the "Products" section on our website for more details.',
-                'volunteer|volunteering': 'We welcome volunteers with expertise in AI, data science, or community outreach. Submit your details in the "Get Involved" section to join our mission!',
-                'ai technology|technology used|tools': 'We specialize in Generative AI, machine learning, and data analytics, using tools like Python, TensorFlow, and cloud platforms to build innovative solutions.',
-                'projects|examples|case studies': 'Our projects include AI-driven community tools, educational platforms, and predictive analytics for non-profits. Visit our "Products" section for examples.',
-                'team|who is on the team|members': 'Our team consists of volunteer AI experts, data scientists, and community advocates from diverse backgrounds, united by a passion for social impact.',
-                'impact|community impact|difference': 'We empower communities by providing free AI solutions, enhancing access to technology, and fostering innovation in underserved areas.',
-                'future plans|future goals|next steps': 'We aim to expand our reach, develop more AI tools, and partner with global organizations to amplify our impact. Stay tuned for updates!',
-                'technical support|help|assistance': 'For technical support with our products, please use the contact form or describe your issue here, and we’ll get back to you promptly.'
-            },
-            ar: {
-                'عنّا|من أنتم|المنظمة': 'GenAI4U هي فريق تطوعي غير ربحي متحمس لاستخدام الذكاء الاصطناعي لحل التحديات العالمية. فريقنا المتنوع يقدم استشارات مجانية لتمكين المجتمعات والمنظمات.',
-                'رؤيتنا|هدف': 'رؤيتنا هي خلق عالم تكون فيه تقنية الذكاء الاصطناعي متاحة للجميع، لتعزيز الابتكار والشمولية.',
-                'مهمتنا|غرض': 'مهمتنا هي تقديم استشارات تقنية مجانية في الذكاء الاصطناعي للمجتمعات والمنظمات، وتعزيز الابتكار والشمولية عالميًا.',
-                'خدماتنا|ما تقدمونه|ماذا تفعلون': 'نقدم استشارات الذكاء الاصطناعي لتوجيه المنظمات في تنفيذ حلول الذكاء الاصطناعي وتطوير تطبيقات الذكاء الاصطناعي التوليدي المخصصة حسب احتياجاتك.',
-                'شارك معنا|المشاركة|الانضمام': 'يمكنك المشاركة من خلال مشاركة حالتك، طلب استشارة، أو تقديم رأيك. تفضل بزيارة قسم "شارك معنا" على موقعنا!',
-                'تواصل معنا|الاتصال': 'يمكنك التواصل معنا عبر نموذج الاتصال على موقعنا أو من خلال الدردشة هنا. نحن متحمسون لسماع رأيك!',
-                'المنتجات|التطبيقات|منتجاتنا': 'منتجاتنا هي تطبيقات تعمل بالذكاء الاصطناعي مصممة لمعالجة تحديات متنوعة. تحقق من قسم "المنتجات" على موقعنا لمزيد من التفاصيل.',
-                'متطوع|التطوع': 'نرحب بالمتطوعين ذوي الخبرة في الذكاء الاصطناعي، علوم البيانات، أو التواصل المجتمعي. أرسل تفاصيلك في قسم "شارك معنا" للانضمام إلى مهمتنا!',
-                'تقنية الذكاء الاصطناعي|التقنيات المستخدمة|الأدوات': 'نحن متخصصون في الذكاء الاصطناعي التوليدي، التعلم الآلي، وتحليلات البيانات، باستخدام أدوات مثل Python وTensorFlow والمنصات السحابية لبناء حلول مبتكرة.',
-                'المشاريع|أمثلة|دراسات حالة': 'تشمل مشاريعنا أدوات مجتمعية مدعومة بالذكاء الاصطناعي، منصات تعليمية، وتحليلات تنبؤية للمنظمات غير الربحية. زر قسم "المنتجات" للحصول على أمثلة.',
-                'الفريق|من في الفريق|الأعضاء': 'يتكون فريقنا من خبراء متطوعين في الذكاء الاصطناعي، علماء بيانات، ومدافعين عن المجتمع من خلفيات متنوعة، موحدين بشغف التأثير الاجتماعي.',
-                'التأثير|تأثير المجتمع|الفرق': 'نعمل على تمكين المجتمعات من خلال تقديم حلول ذكاء اصطناعي مجانية، وتعزيز الوصول إلى التكنولوجيا، وتعزيز الابتكار في المناطق المحرومة.',
-                'الخطط المستقبلية|الأهداف المستقبلية|الخطوات التالية': 'نهدف إلى توسيع نطاقنا، تطوير المزيد من أدوات الذكاء الاصطناعي، والشراكة مع منظمات عالمية لتضخيم تأثيرنا. تابعنا للحصول على التحديثات!',
-                'الدعم الفني|المساعدة|الدعم': 'للحصول على الدعم الفني لمنتجاتنا، يرجى استخدام نموذج الاتصال أو وصف مشكلتك هنا، وسنرد عليك على الفور.'
-            }
-            },
-            fallback: {
-                en: "Sorry, I didn't catch that. Could you clarify or ask about our services, vision, mission, volunteering, or projects?",
-                ar: "عذرًا، لم أفهم ذلك. هل يمكنك توضيح السؤال أو السؤال عن خدماتنا، رؤيتنا، مهمتنا، التطوع، أو المشاريع؟"
-            },
-            greetingTriggers: {
-                en: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-                ar: ['هلا', 'السلام عليكم', 'مرحبا', 'أهلاً', 'صباح الخير', 'مساء الخير']
-            }
-            };
+
+        
         // Main response function
         async function getChatResponse(message, lang = 'en') {
-            lang = ['en', 'ar'].includes(lang) ? lang : 'en';
-            const msg = message.toLowerCase().trim();
-
-            // Check greetings
-            if (chatBot.greetingTriggers[lang].some(greet => msg.includes(greet))) {
-                return chatBot.greetings[lang];
+            const query = message
+            sessionId = generateUUID();
+            if (!query) {
+                console.warn('Empty query');
+                return;
             }
-
-            // Match keyword patterns
-            for (const [pattern, answer] of Object.entries(chatBot.responses[lang])) {
-                const keywords = pattern.split('|');
-                if (keywords.some(kw => msg.includes(kw))) {
-                return answer;
+            
+            
+            // Show typing indicator
+            try {
+                
+                const response = await fetch('https://genai4you-genai4youchatbot.hf.space/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        session_id: sessionId
+                    })
+                });
+                
+                if (!response.ok) {
+                    let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.detail || errorMessage;
+                    } catch (e) {
+                        const errorText = await response.text();
+                        errorMessage = errorText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
                 }
-            }
+                const data = await response.json();
 
-            // Fallback
-            return chatBot.fallback[lang];
+                
+                if (data.messages && data.messages.length > 0) {
+                    // Find the last bot message
+                    const botMessages = data.messages.filter(msg => msg.role === 'bot');
+                    if (botMessages.length > 0) {
+                        const lastBotMessage = botMessages[botMessages.length - 1];
+                        // console.log('Last bot message:', lastBotMessage.content );
+                        return lastBotMessage.content;
+                    } else {
+                        throw new Error('No bot response found in messages');
+                    }
+                } else {
+                    throw new Error('No messages received from server');
+                }
+
+
+            } catch (error) {
+                console.error('Error in sendMessage:', error);
+                
+            } finally {
+                console.log('Clearing typing indicator');
+            }
         }
         // 
         chatSend.addEventListener('click', async () => {
