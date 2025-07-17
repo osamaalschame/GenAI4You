@@ -532,15 +532,15 @@
     <nav class="bg-dark-nav shadow-lg p-4 flex justify-between items-center sticky top-0 z-20">
         <div class="logo">
             <img src="static/img/logo.png" alt="GenAI4U Logo" class="logo-icon">
-            <!-- <span class="logo-text">GenAI4U</span> -->
         </div>
         <div class="flex items-center space-x-6">
             <a href="#contact" class="text-gray-300 hover:text-white transition font-medium" id="nav-contact">Contact</a>
+            <a href="data-protection.html" class="text-gray-300 hover:text-white transition font-medium" id="nav-home">Data Protection</a>
+
             <select id="lang-switcher" class="bg-transparent text-gray-300 border-none outline-none cursor-pointer">
                 <option value="en">English</option>
                 <option value="ar">العربية</option>
             </select>
-            <!-- <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"></button> -->
         </div>
     </nav>
 
@@ -612,23 +612,7 @@
             <p class="text-center text-gray-300 max-w-2xl mx-auto mb-8" id="products-description">Discover our cutting-edge AI projects and applications transforming communities worldwide.</p>
 
             <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- {% for app in apps %}
-                <div class="bg-dark-card rounded-lg p-6 app-card" data-tilt data-tilt-max="8" data-tilt-speed="400">
-                    <span class="badge mb-2">AI-Powered</span>
-                    <h3 class="text-xl font-semibold mb-3 font-orbitron">{{ app.title }}</h3>
-                    <p class="text-gray-300 mb-4 description" data-en="{{ app.description_en }}" data-ar="{{ app.description_ar }}">{{ app.description_en }}</p>
-                    {% if app.video_url %}
-                    <div class="video-container mb-4 skeleton" data-url="{{ app.video_url }}">
-                        <iframe src="{{ app.video_url }}" frameborder="0" allowfullscreen onload="this.parentElement.classList.remove('skeleton')"></iframe>
-                    </div>
-                    {% endif %}
-                    {% if app.iframe_url %}
-                    <div class="mb-4">
-                        <button id="previewApplication" class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe" data-url="{{ app.iframe_url }}">Preview Application</button>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %} -->
+               
             </div>
         </section>
 
@@ -1022,20 +1006,6 @@
             getInvolvedContent.classList.toggle('active');
             getInvolvedChevron.classList.toggle('active');
         });
-
-        // const overlay = document.getElementById('iframe-overlay');
-        // const iframe = overlay.querySelector('iframe');
-        // setTimeout(async () => {
-        //     document.querySelectorAll('.toggle-iframe').forEach(button => {
-            
-        //     button.addEventListener('click', () => {
-        //         console.log('clicked toggle-iframe button', button.dataset.url);
-        //         iframe.src = button.dataset.url;
-        //         overlay.classList.add('active');
-        //         overlay.querySelector('.iframe-container').classList.add('skeleton');
-        //     });
-        // });
-        // }, 1000); // 500ms delay
         
         overlay.querySelector('.close-overlay').addEventListener('click', () => {
             overlay.classList.remove('active');
