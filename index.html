@@ -1128,12 +1128,14 @@
                   onload="this.parentElement.classList.remove('skeleton')"></iframe>
               </div>` : ''
             }
-            ${app.iframe_url ? `
-            <div class="mb-4">
-                <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe preview-btn" data-en="Preview Application"
-            data-ar="عرض" onclick="toggleIframePerview(this)" data-url="${ app.iframe_url }">Preview Application</button>
-            </div>` : ''
-            }
+            
+            ${app.requires_login && app.iframe_url ? `
+                <a href="${app.iframe_url}" target="_blank" rel="noopener">
+                    <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2">Open Application</button>
+                </a>
+                ` : (!app.requires_login && app.iframe_url) ? 
+                `<button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe preview-btn" onclick="toggleIframePerview(this)" data-ar="عرض" data-en="Preview Application" data-url="${app.iframe_url}">Preview Application</button>
+`               :  ''}
           `;
 
           container.appendChild(div);
