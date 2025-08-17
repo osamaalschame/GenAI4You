@@ -856,6 +856,9 @@
             document.querySelectorAll('.project-title').forEach(desc => {
                 desc.textContent = lang === 'ar' ? desc.dataset.ar : desc.dataset.en;
             });
+            document.querySelectorAll('.download-btn').forEach(desc => {
+                desc.textContent = lang === 'ar' ? desc.dataset.ar : desc.dataset.en;
+            });
         });
 
         let vantaEffect = null;
@@ -1137,8 +1140,8 @@
                 `<button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 toggle-iframe preview-btn" onclick="toggleIframePerview(this)" data-ar="عرض" data-en="Preview Application" data-url="${app.iframe_url}">Preview Application</button>
 `               :  ''}
             ${app.downlaod_app ? `
-              <a href="${app.downlaod_app}" download rel="noopener">
-                    <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2">Download app</button>
+              <a href="${app.downlaod_app}" download rel="noopener"> data-ar="تحميل التطبيق" data-en="Download app"
+                    <button class="gradient-btn text-white px-4 py-2 rounded-lg mb-2 download-btn">Download app</button>
             </a>`: ''
             }
           
