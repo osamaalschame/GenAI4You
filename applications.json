@@ -81,5 +81,16 @@
     "iframe_url": null,
     "requires_login":false,
     "downlaod_app":""
+  },
+  {
+    "id": 8,
+    "title": "Mydoctor – Your Smart AI Medical Companion",
+    "title_ar": "دكتوري – المساعد الطبي الذكي بالذكاء الاصطناعي",
+    "description_en": "Mydoctor is an intelligent voice-enabled medical assistant powered by Generative AI. It helps users understand their medical reports in simple language, interact naturally through conversation, and receive friendly, reliable health insights — making healthcare more human, accessible, and empathetic.",
+    "description_ar": "دكتوري هو مساعد طبي ذكي يعمل بالصوت ومدعوم بالذكاء الاصطناعي التوليدي. يساعد المستخدمين على فهم تقاريرهم الطبية بلغة بسيطة وواضحة، ويتفاعل معهم بطريقة طبيعية، ليقدّم تجربة صحية أكثر إنسانية وسهولة وتعاطفًا.",
+    "video_url": "https://www.youtube.com/embed/D5mJzrjX8Z8",
+    "iframe_url": "https://mydoctor.genai4you.com",
+    "requires_login":false,
+    "downlaod_app":""
   }
 ]
